@@ -58,6 +58,23 @@ VALUES
     ('Abbott Grow','',4,3,400,87000),
     ('Abbott Grow School','',4,3,400,87000);
 
+DROP TABLE IF EXISTS `ql_ban_sua`.`customers`;
+
+CREATE TABLE `ql_ban_sua`.`customers` (
+  `customer_id` INT(5) NOT NULL AUTO_INCREMENT,
+  `customer_name` VARCHAR(50) NULL COLLATE 'utf8mb4_unicode_ci',
+  `gender` INT(1),
+  `address` VARCHAR(200) NULL COLLATE 'utf8mb4_unicode_ci',
+  `phone` VARCHAR(15) NULL,
+  `email` VARCHAR(100) NULL,
+  PRIMARY KEY (`customer_id`))
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB;
+
+INSERT INTO `ql_ban_sua`.`customers` (`customer_name`,`gender`,`address`,`phone`,`email`)
+VALUES 
+    ('Abbott Grow','',4,3,400,87000),
+    ('Abbott Grow School','',4,3,400,87000);
 
 DROP TABLE IF EXISTS `ql_ban_sua`.`user`;
 
