@@ -2,6 +2,7 @@
 require_once 'controllers/Session.php';
 require_once 'models/Category.php';
 $categoryArr = (new Category())->all();
+$brand = $_GET['brand'] ?? '';
 $user = isset($_SESSION['email']) ?  $_SESSION['email'] : [];
 ?>
 <div class="user_option_box">
@@ -52,7 +53,7 @@ $user = isset($_SESSION['email']) ?  $_SESSION['email'] : [];
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <?php foreach ($categoryArr as $each) : ?>
                     <li class="nav-item active">
-                        <a class="nav-link" href="?category=<?php echo $each->getCategoryId(); ?>"><?php echo $each->getCategoryName(); ?></a>
+                        <a class="nav-link" href="<?php echo "?category=" . $each->getCategoryId() . ($brand ? "&brand=$brand" : ""); ?>"><?php echo $each->getCategoryName(); ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>

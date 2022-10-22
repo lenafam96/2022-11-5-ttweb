@@ -4,19 +4,25 @@ class HomeController
 {
     public function index($category = null, $brand = null, $sort = null): void
     {
-        echo $category;
-        echo $brand;
-        echo $sort;
         require_once 'models/Product.php';
         require_once 'models/Category.php';
-        $categoryName = '';
-        if ($category == null && $sort == null)
+        $title = '';
+        if ($category == null && $brand == null && $sort == null) {
             $arr = (new Product())->all();
-        else if ($category == '')
+            $title = 'SẢN PHẨM MỚI NHẤT';
+        } else if ($category == null && $brand == null) {
             $arr = (new Product())->all($sort);
-        else {
+            $title = 'SẢN PHẨM MỚI NHẤT';
+        } else if ($category == null) {
+            $arr = (new Product())->findByBrandId($brand, $sort);
+            $title = (new Brand())->find($brand)->getBrandName();
+        } else if ($brand == null) {
             $arr = (new Product())->findByCategoryId($category, $sort);
-            $categoryName = (new Category())->find($category)->getCategoryName();
+            $title = (new Category())->find($category)->getCategoryName();
+        } else {
+            $arr = (new Product())->findByCategoryAndBrandId($category, $brand, $sort);
+            $title = (new Category())->find($category)->getCategoryName();
+            $title .= " - " . (new Brand())->find($brand)->getBrandName();
         }
         require 'views/Home.php';
     }

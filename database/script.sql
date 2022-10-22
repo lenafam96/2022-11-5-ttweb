@@ -73,8 +73,8 @@ ENGINE=InnoDB;
 
 INSERT INTO `ql_ban_sua`.`customers` (`customer_name`,`gender`,`address`,`phone`,`email`)
 VALUES 
-    ('Mai Hà Trang',1,'192 Kim Giang, Hoàng Mai, Hà Nội',0356254458,'mhtrang@gmail.com'),
-    ('Nguyễn Hoàng Nam',0,'104 Nguyễn An Ninh, Hoàng Mai, Hà Nội',0987654321,'nhnam@gmail.com');
+    ('Mai Hà Trang',1,'192 Kim Giang, Hoàng Mai, Hà Nội','0356254458','mhtrang@gmail.com'),
+    ('Nguyễn Hoàng Nam',0,'104 Nguyễn An Ninh, Hoàng Mai, Hà Nội','0987654321','nhnam@gmail.com');
 
 DROP TABLE IF EXISTS `ql_ban_sua`.`user`;
 

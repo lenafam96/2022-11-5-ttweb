@@ -12,7 +12,6 @@
     overflow-y: hidden;
     height: 42vh;
     border: 1px solid #e2e2e2;
-    ;
     position: relative;
 }
 
@@ -73,7 +72,7 @@ footer {
 
 header {
     background-color: #fff;
-    height: 133px;
+    /* height: 133px; */
 }
 
 .body {
@@ -83,7 +82,7 @@ header {
 
 .body aside {
     width: 15%;
-    min-height: 300px;
+    min-height: 1px;
 }
 
 .body article {
@@ -133,6 +132,8 @@ a.product-info {
 a.product-info,
 a.product-info:hover {
     text-decoration: none;
+    position: absolute;
+    bottom: 0;
 }
 
 section.name {
@@ -413,4 +414,36 @@ ul.dropdown-menu {
 .active {
     font-weight: bold;
     margin-right: 15px;
+}
+
+.nav-li {
+    list-style-type: none;
+    z-index: 1000;
+}
+
+.nav-box {
+    border: none;
+}
+
+.nav-link,
+.nav-link:hover {
+    color: #fff;
+}
+
+.nav-ul {
+    margin: 10px 0 0 0;
+    padding-bottom: 50px;
+    padding-left: 10px;
+    height: 100vh;
+    background-color: #333;
+    position: fixed;
+    width: 15%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    padding-top: 150px;
+}
+
+.nav-box:hover {
+    background-color: rgb(156, 156, 156);
 }

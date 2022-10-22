@@ -36,8 +36,12 @@
         </a>
     </div> -->
     <div class="card-header">
-        <h3 id="title"><?php echo ($categoryName != "" ? $categoryName : "SẢN PHẨM MỚI NHẤT"); ?></h3>
-        <form action="?category=<?php echo $category; ?>" method="post">
+        <h3 id="title"><?php echo $title; ?></h3>
+        <form action="<?php
+                        $params = $category ? "?category=$category" : "";
+                        if ($brand)
+                            $params .= $params ? "&brand=$brand" : "?brand=$brand";
+                        echo $params; ?>" method="post">
             <div>
                 <select name="sort" id="sort-box" onchange="this.form.submit()">
                     <option value="0" <?php if ($sort === '0') echo "selected"; ?>>Mặc định</option>

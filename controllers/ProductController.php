@@ -24,7 +24,7 @@ class ProductController
     {
         (new Product())->create($_POST, $_FILES);
 
-        header('location: index.php');
+        (new Controller())->myHeader("index.php");
     }
 
     public function edit(): void
@@ -43,13 +43,13 @@ class ProductController
     {
         if ($_FILES['image']['name'] != null) (new Product())->update($_POST, $_FILES);
         else (new Product())->update($_POST);
-        header('location: index.php');
+        (new Controller())->myHeader("index.php");
     }
 
     public function delete(): void
     {
         (new Product())->delete($_GET['id']);
-        header('location: index.php');
+        (new Controller())->myHeader("index.php");
     }
 
     public function check($action)

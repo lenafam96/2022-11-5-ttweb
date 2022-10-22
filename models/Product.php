@@ -28,7 +28,7 @@ class Product
         $sql = "select products.*,category_name,brand_name from products
         left join categories on products.category_id = categories.category_id
         left join brands on products.brand_id = brands.brand_id
-        where products.category_id = " . $category;
+        where products.category_id = $category";
         if ($sort != '' && $sort != '0')
             $sql = $sql . " order by price " . $sort;
         $result = (new Connect())->excuteQuery($sql);
@@ -48,7 +48,27 @@ class Product
         $sql = "select products.*,category_name,brand_name from products
         left join categories on products.category_id = categories.category_id
         left join brands on products.brand_id = brands.brand_id
-        where products.brand_id = " . $brand;
+        where products.brand_id = $brand";
+        if ($sort != '' && $sort != '0')
+            $sql = $sql . " order by price " . $sort;
+        $result = (new Connect())->excuteQuery($sql);
+
+        $arr = [];
+        foreach ($result as $each) {
+            $object = new ProductObject($each);
+
+            $arr[] = $object;
+        }
+
+        return $arr;
+    }
+
+    public function findByCategoryAndBrandId($category, $brand, $sort): array
+    {
+        $sql = "select products.*,category_name,brand_name from products
+        left join categories on products.category_id = categories.category_id
+        left join brands on products.brand_id = brands.brand_id
+        where products.category_id = $category and products.brand_id = $brand";
         if ($sort != '' && $sort != '0')
             $sql = $sql . " order by price " . $sort;
         $result = (new Connect())->excuteQuery($sql);
