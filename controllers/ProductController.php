@@ -56,7 +56,6 @@ class ProductController
     {
         if (isset($_SESSION['email']))
             $this->$action();
-        else
-            header('location: views/404.php');
+        else (new Controller())->myHeader("views/404.php");
     }
 }

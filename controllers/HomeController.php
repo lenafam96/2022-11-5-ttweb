@@ -38,7 +38,7 @@ class HomeController
         require_once 'models/Account.php';
         if ((new Account)->login($_POST) > 0) {
             $_SESSION['email'] = $_POST;
-            header('location: index.php');
+            (new Controller())->myHeader("index.php");
         } else {
             $message = "Email hoặc Password không đúng!";
             require 'views/Login.php';
@@ -48,6 +48,6 @@ class HomeController
     public function logout(): void
     {
         unset($_SESSION['email']);
-        header('location: index.php');
+        (new Controller())->myHeader("index.php");
     }
 }

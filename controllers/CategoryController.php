@@ -18,7 +18,7 @@ class CategoryController
     {
         (new Category())->create($_POST);
 
-        header('location: index.php');
+        (new Controller())->myHeader("index.php");
     }
 
     public function edit(): void
@@ -48,7 +48,6 @@ class CategoryController
     {
         if (isset($_SESSION['email']))
             $this->$action();
-        else
-            header('location: views/404.php');
+        else (new Controller())->myHeader("views/404.php");
     }
 }
