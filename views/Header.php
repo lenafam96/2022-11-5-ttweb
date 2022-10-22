@@ -35,6 +35,7 @@ $user = isset($_SESSION['email']) ?  $_SESSION['email'] : [];
                     <li><a href="index.php?action=index_c">Quản lý loại sữa</a></li>
                     <li><a href="index.php?action=index_b">Quảng lý hãng sữa</a></li>
                     <li><a href="index.php?action=index">Quản lý sản phẩm</a></li>
+                    <li><a href="index.php?action=index_cu">Quản lý khách hàng</a></li>
                     <li><a href="index.php?action=logout">Đăng xuất</a></li>
                 </ul>
             </li>

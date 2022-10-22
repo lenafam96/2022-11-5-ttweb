@@ -15,3 +15,8 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    document.title = "Cập nhật danh mục sữa";
+</script>

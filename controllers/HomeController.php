@@ -2,8 +2,11 @@
 
 class HomeController
 {
-    public function index($category = null, $sort = null): void
+    public function index($category = null, $brand = null, $sort = null): void
     {
+        echo $category;
+        echo $brand;
+        echo $sort;
         require_once 'models/Product.php';
         require_once 'models/Category.php';
         $categoryName = '';

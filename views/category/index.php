@@ -35,6 +35,8 @@
 </div>
 
 <script>
+    document.title = "Quản lý loại sữa";
+
     function Del(name) {
         return confirm("Bạn có chắc chắn muốn xoá loại sữa: " + name + " ?");
     }

@@ -15,3 +15,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.title = "Cập nhật hãng sữa";
+</script>

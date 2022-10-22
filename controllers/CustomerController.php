@@ -1,22 +1,22 @@
 <?php
-require_once 'models/Brand.php';
+require_once 'models/Customer.php';
 
-class BrandController
+class CustomerController
 {
     public function index()
     {
-        $arr = (new Brand())->all();
-        require_once 'views/brand/index.php';
+        $arr = (new Customer())->all();
+        require_once 'views/customer/index.php';
     }
 
     public function create(): void
     {
-        require 'views/brand/create.php';
+        require 'views/customer/create.php';
     }
 
     public function store(): void
     {
-        (new Brand())->create($_POST);
+        (new Customer())->create($_POST);
 
         (new Controller())->myHeader("index.php");
     }
@@ -24,21 +24,21 @@ class BrandController
     public function edit(): void
     {
         $id = $_GET['id'];
-        $each = (new Brand())->find($id);
+        $each = (new Customer())->find($id);
 
-        require 'views/brand/update.php';
+        require 'views/customer/update.php';
     }
 
     public function update(): void
     {
-        (new Brand())->update($_POST);
+        (new Customer())->update($_POST);
 
         (new Controller())->myHeader("index.php");
     }
 
     public function delete(): void
     {
-        (new Brand())->delete($_GET['id']);
+        (new Customer())->delete($_GET['id']);
 
         (new Controller())->myHeader("index.php");
     }

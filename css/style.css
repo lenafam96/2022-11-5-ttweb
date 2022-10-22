@@ -11,13 +11,16 @@
     text-align: left;
     overflow-y: hidden;
     height: 42vh;
-    border: 1px solid #e2e2e2;;
+    border: 1px solid #e2e2e2;
+    ;
+    position: relative;
 }
 
-.logo>a{
+.logo>a {
     width: 20%;
 }
-.logo>a>img{
+
+.logo>a>img {
     width: 100%;
 }
 
@@ -79,12 +82,12 @@ header {
 }
 
 .body aside {
-    width: 10%;
+    width: 15%;
     min-height: 300px;
 }
 
 .body article {
-    width: 80%;
+    width: 70%;
     min-height: 300px;
 }
 
@@ -120,6 +123,11 @@ a.dropdown-toggle {
     padding-top: 10px;
     text-decoration: none;
     display: flex;
+}
+
+a.product-info {
+    position: absolute;
+    bottom: 0;
 }
 
 a.product-info,

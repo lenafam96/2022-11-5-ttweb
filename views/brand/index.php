@@ -35,6 +35,8 @@
 </div>
 
 <script>
+    document.title = "Quản lý hãng sữa";
+
     function Del(name) {
         return confirm("Bạn có chắc chắn muốn xoá hãng sữa: " + name + " ?");
     }

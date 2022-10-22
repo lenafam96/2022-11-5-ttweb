@@ -7,7 +7,6 @@ class Brand
 {
     public function all()
     {
-        echo ("innnnn");
         $sql = "select * from brands";
         $result = (new Connect())->excuteQuery($sql);
 
@@ -23,17 +22,13 @@ class Brand
 
     public function create($params1): void
     {
-        // echo "kfajklds";
-        // print_r($params1);
         $object = new BrandObject($params1);
         $sql = "insert into brands (brand_name)
         values('" . $object->getBrandName() . "')";
-        die($sql);
         (new Connect())->excuteNonQuery($sql);
     }
     public function update($params1): void
     {
-        echo ("hhhhh");
         $object = new BrandObject($params1);
         $sql = "update brands set brand_name = '" . $object->getBrandName() . "' where brand_id = " . $object->getBrandId();
         (new Connect())->excuteNonQuery($sql);
@@ -47,7 +42,6 @@ class Brand
 
     public function find($id): object
     {
-
         $sql = "select * from brands where brand_id = $id";
         $result = (new Connect())->excuteQuery($sql);
         $each = mysqli_fetch_array($result);
