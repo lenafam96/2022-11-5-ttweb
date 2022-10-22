@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `ql_ban_sua`.`customers`;
 CREATE TABLE `ql_ban_sua`.`customers` (
   `customer_id` INT(5) NOT NULL AUTO_INCREMENT,
   `customer_name` VARCHAR(50) NULL COLLATE 'utf8mb4_unicode_ci',
-  `gender` INT(1),
+  `gender` INT(1) NOT NULL DEFAULT 0,
   `address` VARCHAR(200) NULL COLLATE 'utf8mb4_unicode_ci',
   `phone` VARCHAR(15) NULL,
   `email` VARCHAR(100) NULL,
@@ -73,8 +73,8 @@ ENGINE=InnoDB;
 
 INSERT INTO `ql_ban_sua`.`customers` (`customer_name`,`gender`,`address`,`phone`,`email`)
 VALUES 
-    ('Abbott Grow','',4,3,400,87000),
-    ('Abbott Grow School','',4,3,400,87000);
+    ('Mai Hà Trang',1,'192 Kim Giang, Hoàng Mai, Hà Nội',0356254458,'mhtrang@gmail.com'),
+    ('Nguyễn Hoàng Nam',0,'104 Nguyễn An Ninh, Hoàng Mai, Hà Nội',0987654321,'nhnam@gmail.com');
 
 DROP TABLE IF EXISTS `ql_ban_sua`.`user`;
 

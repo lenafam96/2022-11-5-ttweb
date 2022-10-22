@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h2>Sửa thông tin sản phẩm</h2>
+            <h2>Cập nhật thông tin sản phẩm</h2>
         </div>
         <div class="card-body">
             <form action="?action=update" method="post" enctype="multipart/form-data">

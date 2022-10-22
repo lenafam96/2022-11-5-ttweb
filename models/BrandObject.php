@@ -27,7 +27,7 @@ class BrandObject
 
     public function __construct($each)
     {
-        $this->brandId = $each['brand_id'];
+        $this->brandId = $each['brand_id'] ?? -1;
         $this->brandName = $each['brand_name'];
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'controllers/CategoryController.php';
-// require_once 'controllers/BrandController.php';
+require_once 'controllers/BrandController.php';
 require_once 'controllers/ProductController.php';
 require_once 'controllers/HomeController.php';
 require_once 'controllers/Controller.php';
@@ -38,7 +38,7 @@ switch ($action) {
     case 'edit_b':
     case 'update_b':
     case 'delete_b':
-        // (new BrandController())->check(substr($action, 0, -2));
+        (new BrandController())->check(substr($action, 0, -2));
         break;
     case 'index':
     case 'create':

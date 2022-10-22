@@ -1,22 +1,23 @@
 <?php
 
-class CategoryController
+class BrandController
 {
     public function index()
     {
-        require_once 'models/Category.php';
-        $arr = (new Category())->all();
-        require_once 'views/category/index.php';
+        require_once 'models/Brand.php';
+        $arr = (new Brand())->all();
+        require_once 'views/brand/index.php';
     }
 
     public function create(): void
     {
-        require 'views/category/create.php';
+        require 'views/brand/create.php';
     }
 
     public function store(): void
     {
-        (new Category())->create($_POST);
+        print_r($_POST);
+        (new Brand())->create($_POST);
 
         header('location: index.php');
     }
@@ -24,22 +25,22 @@ class CategoryController
     public function edit(): void
     {
         $id = $_GET['id'];
-        require_once 'models/Category.php';
-        $each = (new Category())->find($id);
+        require_once 'models/Brand.php';
+        $each = (new Brand())->find($id);
 
-        require 'views/category/update.php';
+        require 'views/brand/update.php';
     }
 
     public function update(): void
     {
-        (new Category())->update($_POST);
+        (new Brand())->update($_POST);
 
         (new Controller())->myHeader("index.php");
     }
 
     public function delete(): void
     {
-        (new Category())->delete($_GET['id']);
+        (new Brand())->delete($_GET['id']);
 
         (new Controller())->myHeader("index.php");
     }
