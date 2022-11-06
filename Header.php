@@ -1,7 +1,5 @@
 <?php
 require_once 'controllers/Session.php';
-require_once 'models/Category.php';
-$categoryArr = (new Category())->all();
 $brand = $_GET['brand'] ?? '';
 $user = isset($_SESSION['email']) ?  $_SESSION['email'] : [];
 ?>

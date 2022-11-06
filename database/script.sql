@@ -1,102 +1,22 @@
-DROP DATABASE IF EXISTS `ql_ban_sua`;
+DROP DATABASE IF EXISTS `qldt`;
 
-CREATE DATABASE `ql_ban_sua`;
+CREATE DATABASE `qldt`;
 
-DROP TABLE IF EXISTS `ql_ban_sua`.`brands`;
+DROP TABLE IF EXISTS `qldt`.`products`;
 
-CREATE TABLE `ql_ban_sua`.`brands` (
-  `brand_id` INT(5) NOT NULL AUTO_INCREMENT,
-  `brand_name` VARCHAR(50) NULL COLLATE 'utf8mb4_unicode_ci',
-  PRIMARY KEY (`brand_id`))
-COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB;
-
-INSERT INTO `ql_ban_sua`.`brands` (`brand_name`)
-VALUES 
-    ('Vinamilk'),
-    ('Nutifood'),
-    ('Abbott'),
-    ('Daisy'),
-    ('Dutch Lady'),
-    ('Dumex');
-
-DROP TABLE IF EXISTS `ql_ban_sua`.`categories`;
-
-CREATE TABLE `ql_ban_sua`.`categories` (
-  `category_id` INT(5) NOT NULL AUTO_INCREMENT,
-  `category_name` VARCHAR(50) NULL COLLATE 'utf8mb4_unicode_ci',
-  PRIMARY KEY (`category_id`))
-COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB;
-
-INSERT INTO `ql_ban_sua`.`categories` (`category_name`)
-VALUES 
-    ('Sữa đặc'),
-    ('Sữa tươi'),
-    ('Sữa chua'),
-    ('Sữa bột');
-
-
-DROP TABLE IF EXISTS `ql_ban_sua`.`products`;
-
-CREATE TABLE `ql_ban_sua`.`products` (
-  `product_id` INT(5) NOT NULL AUTO_INCREMENT,
-  `product_name` VARCHAR(50) NULL COLLATE 'utf8mb4_unicode_ci',
-  `image` VARCHAR(200) NULL,
-  `category_id` INT(5) NOT NULL,
-  `brand_id` INT(5) NOT NULL,
-  `weight` INT(11),
+CREATE TABLE `qldt`.`products` (
+  `productId` INT(5) NOT NULL AUTO_INCREMENT,
+  `productName` VARCHAR(100) NULL COLLATE 'utf8mb4_unicode_ci',
   `price` INT(11) NULL,
-  PRIMARY KEY (`product_id`),
-  FOREIGN KEY (`category_id`) REFERENCES `categories`(`category_id`),
-  FOREIGN KEY (`brand_id`) REFERENCES `brands`(`brand_id`))
+  `quantity` INT(11) NULL,
+  `yearOfManufacture` INT(11) NULL,
+  `brand` VARCHAR(100) NULL COLLATE 'utf8mb4_unicode_ci',
+  `description` VARCHAR(2000) NULL COLLATE 'utf8mb4_unicode_ci',
+  PRIMARY KEY (`productId`))
 COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB;
 
-INSERT INTO `ql_ban_sua`.`products` (`product_name`,`image`,`category_id`,`brand_id`,`weight`,`price`)
+INSERT INTO `qldt`.`products` (`productName`,`price`,`quantity`,`yearOfManufacture`,`brand`,`description`)
 VALUES 
-    ('Abbott Grow','',4,3,400,87000),
-    ('Abbott Grow School','',4,3,400,87000);
-
-DROP TABLE IF EXISTS `ql_ban_sua`.`customers`;
-
-CREATE TABLE `ql_ban_sua`.`customers` (
-  `customer_id` INT(5) NOT NULL AUTO_INCREMENT,
-  `customer_name` VARCHAR(50) NULL COLLATE 'utf8mb4_unicode_ci',
-  `gender` INT(1) NOT NULL DEFAULT 0,
-  `address` VARCHAR(200) NULL COLLATE 'utf8mb4_unicode_ci',
-  `phone` VARCHAR(15) NULL,
-  `email` VARCHAR(100) NULL,
-  PRIMARY KEY (`customer_id`))
-COLLATE='utf8mb4_unicode_ci'
-ENGINE=InnoDB;
-
-INSERT INTO `ql_ban_sua`.`customers` (`customer_name`,`gender`,`address`,`phone`,`email`)
-VALUES 
-    ('Mai Hà Trang',1,'192 Kim Giang, Hoàng Mai, Hà Nội','0356254458','mhtrang@gmail.com'),
-    ('Nguyễn Hoàng Nam',0,'104 Nguyễn An Ninh, Hoàng Mai, Hà Nội','0987654321','nhnam@gmail.com');
-
-DROP TABLE IF EXISTS `ql_ban_sua`.`user`;
-
-CREATE TABLE `ql_ban_sua`.`user` (
-  `email` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB;
-
-INSERT INTO `user` (`email`, `password`) VALUES
-('admin@gmail.com', '202cb962ac59075b964b07152d234b70');
-
-DROP PROCEDURE IF EXISTS `USP_Login`;
-
-DELIMITER //
-
-CREATE PROCEDURE `USP_Login` (
-  IN `email_in` varchar(50),
-  IN `password_in` varchar(100)
-)
-BEGIN
-  select * from user where user.email = email_in and user.password = password_in;
-END //
-
-DELIMITER ;
+    ('iphone 14 pro max 1tb',49990000,100,2022,'apple','iPhone 14 Pro Max đem đến những trải nghiệm không thể tìm thấy trên mọi thế hệ iPhone trước đó với màu Tím Deep Purple sang trọng, camera 48MP lần đầu xuất hiện, chip A16 Bionic và màn hình “viên thuốc” Dynamic Island linh hoạt, nịnh mắt.'),
+    ('galaxy fold 4',379990000,59,2021,'samsung','Với Samsung Galaxy Z Fold4, smartphone màn hình gập đã trở nên thân thiện, tiện dụng và bền bỉ hơn rất nhiều. Những cải tiến thiết thực trong từng khía cạnh giúp sản phẩm biến hóa linh hoạt hơn và đem lại những trải nghiệm không thể tìm thấy ở đâu khác.');

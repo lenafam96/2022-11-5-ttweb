@@ -447,3 +447,13 @@ ul.dropdown-menu {
 .nav-box:hover {
     background-color: rgb(156, 156, 156);
 }
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

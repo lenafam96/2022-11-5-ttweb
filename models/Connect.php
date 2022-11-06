@@ -5,7 +5,7 @@ class Connect
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
-    private $database = 'ql_ban_sua';
+    private $database = 'qldt';
 
     public function connectDB()
     {

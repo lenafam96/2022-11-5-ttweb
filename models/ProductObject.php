@@ -4,13 +4,11 @@ class ProductObject
 {
     private int $productId;
     private string $productName;
-    private string $image;
-    private int $categoryId;
-    private string $categoryName;
-    private int $brandId;
-    private string $brandName;
-    private int $weight;
     private int $price;
+    private int $quantity;
+    private int $yearOfManufacture;
+    private string $brand;
+    private string $descripttion;
 
     public function getProductId()
     {
@@ -32,71 +30,6 @@ class ProductObject
         $this->productName = $value;
     }
 
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    public function setImage($value)
-    {
-        $this->image = $value;
-    }
-
-    public function getCategoryId()
-    {
-        return $this->categoryId;
-    }
-
-    public function setCategoryId($value)
-    {
-        $this->categoryId = $value;
-    }
-
-    public function getCategoryName()
-    {
-        return $this->categoryName;
-    }
-
-    public function setCategoryName($value)
-    {
-        $this->categoryName = $value;
-    }
-
-    public function getBrandId()
-    {
-        return $this->brandId;
-    }
-
-    public function setBrandId($value)
-    {
-        $this->brandId = $value;
-    }
-
-    public function getBrandName()
-    {
-        return $this->brandName;
-    }
-
-    public function setBrandName($value)
-    {
-        $this->brandName = $value;
-    }
-
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    public function showWeight()
-    {
-        return $this->weight . " gr";
-    }
-
-    public function setWeight($value)
-    {
-        $this->weight = $value;
-    }
-
     public function getPrice()
     {
         return $this->price;
@@ -112,22 +45,59 @@ class ProductObject
         $this->price = $value;
     }
 
-    public function __construct($each, $files = null)
+    public function getQuantity()
     {
-        $this->productId = $each['product_id'] ?? -1;
-        $this->productName = $each['product_name'];
-        if ($files != null) {
-            $this->image = $files['image']['name'];
-            $image_tmp = $files['image']['tmp_name'];
-            $check = move_uploaded_file($image_tmp, "img/$this->image");
-        } else {
-            $this->image = $each['image'] ?? $each['img_old'];
-        }
-        $this->categoryId = $each['category_id'] ?? -1;
-        $this->categoryName = $each['category_name'] ?? '';
-        $this->brandId = $each['brand_id'] ?? -1;
-        $this->brandName = $each['brand_name'] ?? '';
-        $this->weight = $each['weight'];
+        return $this->quantity;
+    }
+
+    public function setQuantity($value)
+    {
+        $this->quantity = $value;
+    }
+
+    public function getYearOfManufacture()
+    {
+        return $this->yearOfManufacture;
+    }
+
+    public function setYearOfManufacture($value)
+    {
+        $this->yearOfManufacture = $value;
+    }
+
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    public function setBrand($value)
+    {
+        $this->brand = $value;
+    }
+
+    public function getDescription()
+    {
+        return $this->descripttion;
+    }
+
+    public function showDescription()
+    {
+        return str_replace("\n", "<br>", $this->descripttion);
+    }
+
+    public function setDescription($value)
+    {
+        $this->descripttion = $value;
+    }
+
+    public function __construct($each)
+    {
+        $this->productId = $each['productId'] ?? -1;
+        $this->productName = $each['productName'];
         $this->price = $each['price'];
+        $this->quantity = $each['quantity'];
+        $this->yearOfManufacture = $each['yearOfManufacture'];
+        $this->brand = $each['brand'] ?? '';
+        $this->descripttion = $each['description'] ? str_replace(`"`, `\"`, $each['description']) : '';
     }
 }

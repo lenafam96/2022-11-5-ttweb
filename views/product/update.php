@@ -5,43 +5,30 @@
         </div>
         <div class="card-body">
             <form action="?action=update" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="product_id" class="form-control" required value="<?php echo $each->getProductId(); ?>">
-                <input type="hidden" name="img_old" class="form-control" value="<?php echo $each->getImage(); ?>">
+                <input type="hidden" name="productId" class="form-control" required value="<?php echo $each->getProductId(); ?>">
                 <div class="form-group">
                     <label for="">Tên sản phẩm</label>
-                    <input type="text" name="product_name" class="form-control" required value="<?php echo $each->getProductName(); ?>">
-                </div>
-                <div class="form-group">
-                    <label for="">Hình ảnh</label>
-                    <input type="file" name="image" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="">Loại sản phẩm</label>
-                    <select name="category_id" class="form-control" required>
-                        <?php foreach ($categories as $category) : ?>
-                            <option value="<?php echo $category->getCategoryId(); ?>" <?php if ($each->getCategoryId() === $category->getCategoryId()) echo "selected"; ?>>
-                                <?php echo $category->getCategoryName(); ?>
-                            </option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="">Hãng sữa</label>
-                    <select name="brand_id" class="form-control" required>
-                        <?php foreach ($brands as $brand) : ?>
-                            <option value="<?php echo $brand->getBrandId(); ?>" <?php if ($each->getBrandId() === $brand->getBrandId()) echo "selected"; ?>>
-                                <?php echo $brand->getBrandName(); ?>
-                            </option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="">Trọng lượng</label>
-                    <input type="number" name="weight" class="form-control" min="0" required value="<?php echo $each->getWeight(); ?>">
+                    <input type="text" name="productName" class="form-control" required value="<?php echo $each->getProductName(); ?>">
                 </div>
                 <div class="form-group">
                     <label for="">Giá bán</label>
                     <input type="number" name="price" min="0" class="form-control" required value="<?php echo $each->getPrice(); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="">Số lượng</label>
+                    <input type="number" name="quantity" min="0" class="form-control" required value="<?php echo $each->getQuantity(); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="">Năm sản xuất</label>
+                    <input type="number" name="yearOfManufacture" min="1900" max="<?php echo date("Y"); ?>" class="form-control" required value="<?php echo $each->getYearOfManufacture(); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="">Hãng</label>
+                    <input type="text" name="brand" class="form-control" required value="<?php echo $each->getBrand(); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="">Mô tả</label><br>
+                    <textarea name="description" id="description" cols="91" rows="5"><?php echo $each->getDescription(); ?></textarea>
                 </div>
                 <button type="submit" name="sbm" class="btn btn-primary">Lưu</button>
             </form>

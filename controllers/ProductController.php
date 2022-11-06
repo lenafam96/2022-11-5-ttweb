@@ -6,23 +6,23 @@ class ProductController
     public function index(): void
     {
         $arr = (new Product())->all();
-
         require 'views/product/index.php';
+    }
+
+    public function search(): void
+    {
+        $arr = (new Product())->search($_POST);
+        require 'views/product/search.php';
     }
 
     public function create(): void
     {
-        require_once 'models/Category.php';
-        require_once 'models/Brand.php';
-        $categories = (new Category())->all();
-        $brands = (new Brand())->all();
-
         require 'views/product/create.php';
     }
 
     public function store(): void
     {
-        (new Product())->create($_POST, $_FILES);
+        (new Product())->create($_POST);
 
         (new Controller())->myHeader("index.php");
     }
@@ -30,10 +30,6 @@ class ProductController
     public function edit(): void
     {
         $id = $_GET['id'];
-        require_once 'models/Category.php';
-        require_once 'models/Brand.php';
-        $categories = (new Category())->all();
-        $brands = (new Brand())->all();
         $each = (new Product())->find($id);
 
         require 'views/product/update.php';
@@ -41,8 +37,7 @@ class ProductController
 
     public function update(): void
     {
-        if ($_FILES['image']['name'] != null) (new Product())->update($_POST, $_FILES);
-        else (new Product())->update($_POST);
+        (new Product())->update($_POST);
         (new Controller())->myHeader("index.php");
     }
 
@@ -54,8 +49,8 @@ class ProductController
 
     public function check($action)
     {
-        if (isset($_SESSION['email']))
-            $this->$action();
-        else (new Controller())->myHeader("views/404.php");
+        // if (isset($_SESSION['email']))
+        $this->$action();
+        // else (new Controller())->myHeader("views/404.php");
     }
 }
